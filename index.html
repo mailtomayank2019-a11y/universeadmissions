@@ -411,28 +411,68 @@
       </div>
     </div>
 
-    <div class="contact-form-card">
-      <p class="form-title">Book Your Free Session</p>
-      <p class="form-sub">No charges, no obligations — just expert guidance.</p>
-      <div class="form-row">
-        <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" placeholder="Rahul" /></div>
-        <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" placeholder="Sharma" /></div>
-      </div>
-      <div class="form-group"><label for="phone">Mobile Number</label><input type="tel" id="phone" placeholder="+91 98765 43210" /></div>
-      <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="rahul@email.com" /></div>
+<div class="contact-form-card">
+  <p class="form-title">Book Your Free Session</p>
+  <p class="form-sub">No charges, no obligations — just expert guidance.</p>
+
+  <form action="https://formspree.io/f/mwvyanob" method="POST">
+
+    <div class="form-row">
       <div class="form-group">
-        <label for="course">Course of Interest</label>
-        <select id="course">
-          <option value="">Select a program</option>
-          <option>MBA</option><option>BBA</option><option>B.Com</option>
-          <option>M.Com</option><option>MCA</option><option>BCA</option>
-          <option>BA / MA</option><option>Other</option>
-        </select>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="first_name" placeholder="Rahul" />
       </div>
-      <div class="form-group"><label for="message">Anything specific you'd like to know?</label><textarea id="message" placeholder="E.g. I'm a working professional looking for a weekend-friendly MBA..."></textarea></div>
-      <button class="btn-form" onclick="alert('Thank you! A counsellor will contact you shortly.')">Submit — Get Free Counselling</button>
+
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="last_name" placeholder="Sharma" />
+      </div>
     </div>
-  </div>
+
+    <div class="form-group">
+      <label for="phone">Mobile Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="rahul@email.com" />
+    </div>
+
+    <div class="form-group">
+      <label for="course">Course of Interest</label>
+
+      <select id="course" name="course">
+        <option value="">Select a program</option>
+        <option>MBA</option>
+        <option>BBA</option>
+        <option>B.Com</option>
+        <option>M.Com</option>
+        <option>MCA</option>
+        <option>BCA</option>
+        <option>BA / MA</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Anything specific you'd like to know?</label>
+
+      <textarea
+        id="message"
+        name="message"
+        placeholder="E.g. I'm a working professional looking for a weekend-friendly MBA..."
+      ></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="New Admission Enquiry">
+
+    <button type="submit" class="btn-form">
+      Submit — Get Free Counselling
+    </button>
+
+  </form>
+</div>
 </section>
 
 <!-- FOOTER -->
