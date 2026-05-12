@@ -625,10 +625,11 @@ function showFallback() {
 
 const query = "UGC India online education NEP";
 const url = `https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en&count=3`;
-
+const timeout = setTimeout(showFallback, 5000);
 fetch(url)
   .then(r => r.json())
   .then(data => {
+   clearTimeout(timeout);
     if (!data.items || data.items.length === 0) { showFallback(); return; }
     const grid = document.getElementById('news-grid');
     grid.innerHTML = data.items.slice(0, 3).map(item => {
@@ -642,7 +643,8 @@ fetch(url)
         </div>`;
     }).join('');
   })
-  .catch(() => showFallback());
+  .catch(() => {
+    clearTimeout(timeout); showFallback());});
 </script>
 <footer>
   <div class="footer-grid" style="margin: 0 auto;">
