@@ -575,42 +575,6 @@
 </section>
 
 <!-- FOOTER -->
- <section class="blog-section" id="updates">
-  <div class="blog-container">
-    <p class="section-label">Latest Updates</p>
-    <h2 class="section-title">Tips, News & Admission Insights</h2>
-    <p class="section-sub">Stay informed with the latest in education, admissions, and career guidance.</p>
-    <div class="blog-grid">
-
-      <div class="blog-card">
-        <div class="blog-tag">MBA</div>
-        <h3 class="blog-title">MBA vs BBA — Which One Is Right for You?</h3>
-        <p class="blog-excerpt">Confused between MBA and BBA? Here's a simple breakdown to help you choose the right path based on your goals and background.</p>
-        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 2 min read</div>
-        <a href="#" class="blog-link">Read More →</a>
-      </div>
-
-      <div class="blog-card">
-        <div class="blog-tag">Admissions</div>
-        <h3 class="blog-title">Top 5 Questions to Ask Before Choosing a College</h3>
-        <p class="blog-excerpt">Before you finalize your college, make sure you ask these 5 important questions. Most students skip these and regret later.</p>
-        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 3 min read</div>
-        <a href="#" class="blog-link">Read More →</a>
-      </div>
-
-      <div class="blog-card">
-        <div class="blog-tag">Career</div>
-        <h3 class="blog-title">Why Free Counselling Can Change Your Career Direction</h3>
-        <p class="blog-excerpt">Many students make course decisions based on peer pressure. A single free counselling session can completely change your perspective.</p>
-        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 2 min read</div>
-        <a href="#" class="blog-link">Read More →</a>
-      </div>
-
-    </div>
-    <div class="blog-cta">
-      <a href="#contact" class="btn-blog">📞 Book Free Counselling Session</a>
-    </div>
-  </div>
 <!-- AUTO NEWS FEED SECTION -->
 <section class="blog-section" id="updates">
   <div class="blog-container">
@@ -627,22 +591,46 @@
 </section>
 
 <script>
-const queries = [
-  "UGC India education",
-  "NEP 2020 university",
-  "online MBA admission India"
+<script>
+const fallback = [
+  {
+    title: "UGC Approves Online Degrees from Top Universities for 2025-26",
+    date: "May 2026",
+    tag: "UGC Update",
+    link: "https://www.ugc.gov.in"
+  },
+  {
+    title: "NEP 2020: How It Is Changing Higher Education in India",
+    date: "May 2026",
+    tag: "NEP 2020",
+    link: "https://www.education.gov.in"
+  },
+  {
+    title: "Online MBA vs Regular MBA — Which Is Better in 2025?",
+    date: "May 2026",
+    tag: "MBA Guide",
+    link: "#contact"
+  }
 ];
-const query = queries[Math.floor(Math.random() * queries.length)];
-const url = `https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=${encodeURIComponent(query)}+when:7d&hl=en-IN&gl=IN&ceid=IN:en&count=3`;
+
+function showFallback() {
+  document.getElementById('news-grid').innerHTML = fallback.map(item => `
+    <div class="blog-card">
+      <div class="blog-tag">${item.tag}</div>
+      <h3 class="blog-title">${item.title}</h3>
+      <div class="blog-meta">🗓 ${item.date} &nbsp;|&nbsp; 📰 Education News</div>
+      <a href="${item.link}" target="_blank" class="blog-link">Read More →</a>
+    </div>`).join('');
+}
+
+const query = "UGC India online education NEP";
+const url = `https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en&count=3`;
 
 fetch(url)
   .then(r => r.json())
   .then(data => {
+    if (!data.items || data.items.length === 0) { showFallback(); return; }
     const grid = document.getElementById('news-grid');
-    if (!data.items || data.items.length === 0) {
-      grid.innerHTML = '<p>No news found. Check back later.</p>';
-      return;
-    }
     grid.innerHTML = data.items.slice(0, 3).map(item => {
       const date = new Date(item.pubDate).toLocaleDateString('en-IN', {month:'short', year:'numeric'});
       return `
@@ -654,9 +642,7 @@ fetch(url)
         </div>`;
     }).join('');
   })
-  .catch(() => {
-    document.getElementById('news-grid').innerHTML = '<p>Could not load news. Please try again later.</p>';
-  });
+  .catch(() => showFallback());
 </script>
 <footer>
   <div class="footer-grid" style="margin: 0 auto;">
