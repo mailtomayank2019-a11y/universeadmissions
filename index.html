@@ -194,6 +194,105 @@
     .form-row { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   }
+ /* BLOG SECTION */
+.blog-section {
+  background: #f4f8ff;
+  padding: 70px 20px;
+  text-align: center;
+}
+.blog-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  color: #1a73e8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0B1F3A;
+  margin-bottom: 10px;
+}
+.section-sub {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  text-align: left;
+}
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+.blog-tag {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.blog-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0B1F3A;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.blog-excerpt {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.blog-meta {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 15px;
+}
+.blog-link {
+  color: #1a73e8;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.blog-link:hover {
+  text-decoration: underline;
+}
+.blog-cta {
+  margin-top: 40px;
+}
+.btn-blog {
+  background: #1a73e8;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn-blog:hover {
+  background: #0B1F3A;
+}
 </style>
 </head>
 <body>
@@ -522,7 +621,44 @@
     <p>UGC-DEB Compliant Partner Network</p>
   </div>
 </footer>
+<!-- BLOG / UPDATES SECTION -->
+<section class="blog-section" id="updates">
+  <div class="blog-container">
+    <p class="section-label">Latest Updates</p>
+    <h2 class="section-title">Tips, News & Admission Insights</h2>
+    <p class="section-sub">Stay informed with the latest in education, admissions, and career guidance.</p>
+    <div class="blog-grid">
 
+      <div class="blog-card">
+        <div class="blog-tag">MBA</div>
+        <h3 class="blog-title">MBA vs BBA — Which One Is Right for You?</h3>
+        <p class="blog-excerpt">Confused between MBA and BBA? Here's a simple breakdown to help you choose the right path based on your goals and background.</p>
+        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 2 min read</div>
+        <a href="#" class="blog-link">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-tag">Admissions</div>
+        <h3 class="blog-title">Top 5 Questions to Ask Before Choosing a College</h3>
+        <p class="blog-excerpt">Before you finalize your college, make sure you ask these 5 important questions. Most students skip these and regret later.</p>
+        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 3 min read</div>
+        <a href="#" class="blog-link">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-tag">Career</div>
+        <h3 class="blog-title">Why Free Counselling Can Change Your Career Direction</h3>
+        <p class="blog-excerpt">Many students make course decisions based on peer pressure. A single free counselling session can completely change your perspective.</p>
+        <div class="blog-meta">🗓 May 2026 &nbsp;|&nbsp; 📖 2 min read</div>
+        <a href="#" class="blog-link">Read More →</a>
+      </div>
+
+    </div>
+    <div class="blog-cta">
+      <a href="#contact" class="btn-blog">📞 Book Free Counselling Session</a>
+    </div>
+  </div>
+</section>
 <!-- WhatsApp Float -->
 <a href="https://wa.me/918595462696" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
 
