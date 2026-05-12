@@ -611,7 +611,53 @@
       <a href="#contact" class="btn-blog">📞 Book Free Counselling Session</a>
     </div>
   </div>
+<!-- AUTO NEWS FEED SECTION -->
+<section class="blog-section" id="updates">
+  <div class="blog-container">
+    <p class="section-label">Latest Updates</p>
+    <h2 class="section-title">Tips, News & Admission Insights</h2>
+    <p class="section-sub">Latest news from UGC, NEP and Indian universities — updated daily.</p>
+    <div class="blog-grid" id="news-grid">
+      <p style="color:#888;">Loading latest news...</p>
+    </div>
+    <div class="blog-cta">
+      <a href="#contact" class="btn-blog">📞 Book Free Counselling Session</a>
+    </div>
+  </div>
+</section>
 
+<script>
+const queries = [
+  "UGC India education",
+  "NEP 2020 university",
+  "online MBA admission India"
+];
+const query = queries[Math.floor(Math.random() * queries.length)];
+const url = `https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=${encodeURIComponent(query)}+when:7d&hl=en-IN&gl=IN&ceid=IN:en&count=3`;
+
+fetch(url)
+  .then(r => r.json())
+  .then(data => {
+    const grid = document.getElementById('news-grid');
+    if (!data.items || data.items.length === 0) {
+      grid.innerHTML = '<p>No news found. Check back later.</p>';
+      return;
+    }
+    grid.innerHTML = data.items.slice(0, 3).map(item => {
+      const date = new Date(item.pubDate).toLocaleDateString('en-IN', {month:'short', year:'numeric'});
+      return `
+        <div class="blog-card">
+          <div class="blog-tag">Education News</div>
+          <h3 class="blog-title">${item.title}</h3>
+          <div class="blog-meta">🗓 ${date} &nbsp;|&nbsp; 📰 Google News</div>
+          <a href="${item.link}" target="_blank" class="blog-link">Read Full Article →</a>
+        </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('news-grid').innerHTML = '<p>Could not load news. Please try again later.</p>';
+  });
+</script>
 <footer>
   <div class="footer-grid" style="margin: 0 auto;">
     <div class="footer-brand">
