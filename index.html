@@ -400,6 +400,56 @@
     gap: 40px;
   }
 }
+ /* FAQ SECTION */
+.faq-section {
+  background: #f9fdf9;
+  padding: 80px 20px;
+}
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.faq-grid {
+  margin-top: 40px;
+  text-align: left;
+}
+.faq-item {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+.faq-question {
+  padding: 18px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f3d20;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+.faq-question:hover {
+  background: #f4fdf4;
+}
+.faq-question span {
+  font-size: 20px;
+  font-weight: 400;
+  color: #1a6b3a;
+}
+.faq-answer {
+  display: none;
+  padding: 0 20px 18px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+}
+.faq-answer.open {
+  display: block;
+}
 </style>
 </head>
 <body>
@@ -415,6 +465,7 @@
     <li><a href="#universities">Universities</a></li>
     <li><a href="#why">Why Us</a></li>
       <li><a href="#updates">Updates</a></li>
+   <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Apply Now</a></li>
   </ul>
@@ -777,6 +828,71 @@
 
 <!-- FOOTER -->
 </section>
+ <!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div class="faq-container">
+    <p class="section-label">Got Questions?</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about online admissions</p>
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Are online degrees valid in India? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Yes! UGC approved online degrees are completely valid and equal to regular campus degrees as per NEP 2020. They are accepted by employers, government departments and for higher studies.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Is your counselling really free? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely! Our counselling is 100% free with zero hidden charges. We earn through university partnerships — so you never pay us anything. No obligations either!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Can I study while working full time? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Yes! Online and distance programs are specifically designed for working professionals. You can study at your own pace, on weekends or evenings — no need to leave your job!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Which universities do you work with? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          We work with 50+ UGC-DEB approved universities including NMIMS Global, Amity Online, Manipal University, LPU Online, Symbiosis, Jain University, IGNOU, Chandigarh University and many more.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How long does the admission process take? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Typically 1-2 weeks from counselling to final admission. We handle all documentation and paperwork so the process is smooth and fast for you!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          What documents are needed for admission? <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Basic documents include 10th and 12th marksheets, graduation certificate (for PG programs), ID proof and passport photo. Our team guides you through the complete documentation process!
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- AUTO NEWS FEED SECTION -->
 <section class="blog-section" id="updates">
   <div class="blog-container">
@@ -1005,5 +1121,13 @@ window.addEventListener('scroll', () => {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 </style>
+ <script>
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const span = el.querySelector('span');
+  answer.classList.toggle('open');
+  span.textContent = answer.classList.contains('open') ? '−' : '+';
+}
+</script>
 </body>
 </html>
