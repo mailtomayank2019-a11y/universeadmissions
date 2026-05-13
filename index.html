@@ -515,7 +515,7 @@
   <p class="form-title">Book Your Free Session</p>
   <p class="form-sub">No charges, no obligations — just expert guidance.</p>
 
-  <form action="https://formspree.io/f/mwvyanob" method="POST">
+  <form id="counsellingForm" method="POST">
 
     <div class="form-row">
       <div class="form-group">
@@ -672,6 +672,44 @@ document.getElementById('news-grid').innerHTML = fallback.map(item => `
 </section>
 <!-- WhatsApp Float -->
 <a href="https://wa.me/918595462696" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+<!-- POPUP -->
+<div id="successPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; border-radius:16px; padding:40px; max-width:420px; width:90%; text-align:center; animation: popIn 0.4s ease;">
+    <div style="font-size:60px;">🎉</div>
+    <h2 style="color:#0f3d20; font-size:24px; margin:16px 0 8px;">Thank You!</h2>
+    <p style="color:#555; font-size:15px; line-height:1.6;">Our counsellor will contact you within 24 hours. Get ready for your FREE session!</p>
+    <button onclick="document.getElementById('successPopup').style.display='none'" style="margin-top:20px; background:#0f3d20; color:white; border:none; padding:12px 30px; border-radius:8px; font-size:15px; cursor:pointer;">Close</button>
+  </div>
+</div>
+ <script>
+document.getElementById('counsellingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const data = new FormData(form);
+  
+  fetch('https://formspree.io/f/mwvyanob', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      const popup = document.getElementById('successPopup');
+      popup.style.display = 'flex';
+    }
+  })
+  .catch(() => {
+    alert('Something went wrong. Please try again!');
+  });
+});
+</script>
 
+<style>
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
 </body>
 </html>
