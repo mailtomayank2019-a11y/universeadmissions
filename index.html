@@ -1033,6 +1033,52 @@ document.getElementById('counsellingForm').addEventListener('submit', function(e
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+ /* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #1a6b3a;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  #navMenu {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    gap: 0 !important;
+  }
+  #navMenu.open {
+    display: flex;
+  }
+  #navMenu li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  #navMenu li a {
+    color: #1a6b3a !important;
+    font-size: 15px !important;
+  }
+}
 </style>
  <!-- ANIMATIONS -->
 <script>
@@ -1133,6 +1179,19 @@ function toggleFaq(el) {
   answer.classList.toggle('open');
   span.textContent = answer.classList.contains('open') ? '−' : '+';
 }
+</script>
+ <script>
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  menu.classList.toggle('open');
+}
+
+// Close menu when link clicked
+document.querySelectorAll('#navMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navMenu').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
