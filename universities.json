@@ -1,0 +1,34 @@
+[
+  {
+    "name": "NMIMS Global Access",
+    "course": "MBA",
+    "minGradPercent": 50,
+    "minWorkExpMonths": 0,
+    "feePerSemester": 45000,
+    "highlights": "UGC-DEB Approved, Autonomy Category I, Live + Recorded lectures."
+  },
+  {
+    "name": "IMT Ghaziabad (Online)",
+    "course": "PGDM",
+    "minGradPercent": 50,
+    "minWorkExpMonths": 24,
+    "feePerSemester": 65000,
+    "highlights": "Top executive network, AICTE Approved, highly recognized for marketing."
+  },
+  {
+    "name": "Amity University Online",
+    "course": "MBA",
+    "minGradPercent": 45,
+    "minWorkExpMonths": 0,
+    "feePerSemester": 40000,
+    "highlights": "WASC Accredited (USA), extensive global career support."
+  },
+  {
+    "name": "Chandigarh University Online",
+    "course": "MCA",
+    "minGradPercent": 50,
+    "minWorkExpMonths": 0,
+    "feePerSemester": 30000,
+    "highlights": "NAAC A+ Accredited, very cost-effective engineering/IT options."
+  }
+]
