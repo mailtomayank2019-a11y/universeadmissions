@@ -111,13 +111,29 @@ function evaluateEligibility() {
 function captureLead(event) {
     event.preventDefault();
     
+   function captureLead(event) {
+    event.preventDefault();
+    
+    // 1. Gather the details the student typed into your calculator
     const name = document.getElementById('studentName').value;
     const phone = document.getElementById('studentPhone').value;
+    const course = document.getElementById('course').value;
+    const percent = document.getElementById('percent').value;
 
-    // TODO: Send data to your CRM or Email handler here.
-    console.log("Captured High-Intent Student:", { name, phone, qualifiedMatches });
+    // 2. Format a professional WhatsApp message text layout
+    const message = `Hi Universe Admissions, I checked my eligibility on your portal.%0A%0A` +
+                    `*Name:* ${encodeURIComponent(name)}%0A` +
+                    `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                    `*Target Course:* ${encodeURIComponent(course)}%0A` +
+                    `*Graduation Marks:* ${encodeURIComponent(percent)}%25`;
 
-    // Close down the gate and reveal the results panel
+    // 3. Put your real mobile number below (Keep the 91 code, remove the plus sign)
+    const yourWhatsAppNumber = "918595462696"; 
+
+    // 4. Automatically open WhatsApp chat on their mobile or computer
+    window.open(`https://api.whatsapp.com/send?phone=${yourWhatsAppNumber}&text=${message}`, '_blank');
+
+    // 5. Unblock the screen to let them see the university matrix on your site
     document.getElementById('leadModal').style.display = 'none';
     renderMatrix();
 }
