@@ -206,6 +206,49 @@ justify-content:center;
 }
 
 </style>
+  .guide-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.guide-card{
+background:white;
+padding:30px;
+border-radius:18px;
+text-decoration:none;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.guide-card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.guide-card h3{
+color:#1a6b3a;
+font-size:24px;
+margin-bottom:12px;
+}
+
+.guide-card p{
+color:#666;
+margin-bottom:15px;
+}
+
+.guide-card span{
+color:#D4A84B;
+font-weight:700;
+}
+
+@media(max-width:768px){
+
+.guide-grid{
+grid-template-columns:1fr;
+}
+
+}
 </head>
 
 <body>
@@ -673,7 +716,71 @@ color:#666;
 }
 
 </style>
+<!-- POPULAR ADMISSION GUIDES -->
 
+<section style="padding:90px 20px;background:#ffffff;">
+
+<div style="max-width:1200px;margin:auto;">
+
+<div style="text-align:center;margin-bottom:60px;">
+
+<p style="color:#D4A84B;font-weight:700;letter-spacing:2px;text-transform:uppercase;">
+Popular Admission Guides
+</p>
+
+<h2 style="font-size:48px;color:#1a6b3a;">
+Explore Admission Resources
+</h2>
+
+<p style="max-width:800px;margin:20px auto;color:#666;font-size:18px;">
+Compare fees, eligibility, admission process and university options with our detailed guides.
+</p>
+
+</div>
+
+<div class="guide-grid">
+
+<a href="amity-online-mba-fees-2026.html" class="guide-card">
+<h3>Amity Online MBA Fees 2026</h3>
+<p>Fee structure, eligibility, duration and admission details.</p>
+<span>Read Guide →</span>
+</a>
+
+<a href="nmims-online-mba-fees-2026.html" class="guide-card">
+<h3>NMIMS Online MBA Fees 2026</h3>
+<p>Latest fees, admission process and course details.</p>
+<span>Read Guide →</span>
+</a>
+
+<a href="lpu-online-mba-admission-process-2026.html" class="guide-card">
+<h3>LPU Online MBA Admission Process</h3>
+<p>Step-by-step admission process and eligibility.</p>
+<span>Read Guide →</span>
+</a>
+
+<a href="jain-online-mba-eligibility-2026.html" class="guide-card">
+<h3>Jain Online MBA Eligibility</h3>
+<p>Eligibility, specializations and admission process.</p>
+<span>Read Guide →</span>
+</a>
+
+<a href="online-mba-admission-2026.html" class="guide-card">
+<h3>Online MBA Admission Guide 2026</h3>
+<p>Everything you need to know before applying.</p>
+<span>Read Guide →</span>
+</a>
+
+<a href="online-mba-university-comparison-2026.html" class="guide-card">
+<h3>Online MBA University Comparison</h3>
+<p>Compare top online universities side-by-side.</p>
+<span>Read Guide →</span>
+</a>
+
+</div>
+
+</div>
+
+</section>
 <!-- TESTIMONIALS -->
 
 <section style="padding:90px 20px;background:white;">
