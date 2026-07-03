@@ -27,13 +27,16 @@
         .card { border: 2px solid #e3e6f0; border-top: 5px solid var(--primary); padding: 20px; border-radius: 6px; background: white; transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.05); }
         .price { font-size: 20px; font-weight: bold; color: var(--success); margin: 10px 0; }
+        .form-error-msg { color: #9B2C2C; background: #FDECEC; border: 1px solid #F3B4B4; padding: 10px 14px; border-radius: 6px; font-size: 14px; margin-bottom: 16px; display: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>UGC-Approved Online University Selector</h2>
-    
+
+    <div id="loadError" class="form-error-msg"></div>
+
     <div class="form-grid">
         <div>
             <label for="course">Target Program</label>
@@ -81,9 +84,13 @@ let qualifiedMatches = [];
 window.onload = async function() {
     try {
         const response = await fetch('./universities.json');
+        if (!response.ok) throw new Error('File not found');
         database = await response.json();
     } catch (e) {
         console.error("Error loading institutional records", e);
+        const errBox = document.getElementById('loadError');
+        errBox.textContent = "Note: university data could not be loaded. If you're testing this file locally by double-clicking it, browsers block local file loading for security reasons — run it through a local server (e.g. VS Code's 'Live Server' extension) or view it on the live website instead.";
+        errBox.style.display = 'block';
     }
 };
 
@@ -92,15 +99,20 @@ function evaluateEligibility() {
     const userPercent = parseFloat(document.getElementById('percent').value) || 0;
     const userExp = parseInt(document.getElementById('workexp').value) || 0;
 
-    if(userPercent === 0) {
+    if (userPercent === 0) {
         alert("Please provide your Graduation marks percentage.");
+        return;
+    }
+
+    if (!database || database.length === 0) {
+        alert("University data hasn't finished loading yet. Please wait a moment and try again, or refresh the page.");
         return;
     }
 
     // Filter institutional objects matching user metrics
     qualifiedMatches = database.filter(uni => {
-        return uni.course === targetCourse && 
-               userPercent >= uni.minGradPercent && 
+        return uni.course === targetCourse &&
+               userPercent >= uni.minGradPercent &&
                userExp >= uni.minWorkExpMonths;
     });
 
@@ -110,10 +122,7 @@ function evaluateEligibility() {
 
 function captureLead(event) {
     event.preventDefault();
-    
-   function captureLead(event) {
-    event.preventDefault();
-    
+
     // 1. Gather the details the student typed into your calculator
     const name = document.getElementById('studentName').value;
     const phone = document.getElementById('studentPhone').value;
@@ -127,8 +136,8 @@ function captureLead(event) {
                     `*Target Course:* ${encodeURIComponent(course)}%0A` +
                     `*Graduation Marks:* ${encodeURIComponent(percent)}%25`;
 
-    // 3. Put your real mobile number below (Keep the 91 code, remove the plus sign)
-    const yourWhatsAppNumber = "918595462696"; 
+    // 3. Your WhatsApp business number (91 code, no plus sign)
+    const yourWhatsAppNumber = "918595462696";
 
     // 4. Automatically open WhatsApp chat on their mobile or computer
     window.open(`https://api.whatsapp.com/send?phone=${yourWhatsAppNumber}&text=${message}`, '_blank');
