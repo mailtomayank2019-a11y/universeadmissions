@@ -48,7 +48,7 @@
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo"><img src="logo.png" alt="Universe Admissions Logo" /></a>
+  <a href="index.html" class="logo"><img src="logo.png.png" alt="Universe Admissions Logo" /></a>
   <a href="index.html#contact" class="nav-cta">Apply Now</a>
 </nav>
 
